@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface StackedCoversProps {
   images: string[];
@@ -19,7 +20,9 @@ const StackedCovers: React.FC<StackedCoversProps> = ({
       style={{ width: `${width}px`, height: `${height}px` }}
     >
       {images.slice(0, 3).map((src, index) => (
-        <img
+        <Image
+          width={width}
+          height={height}
           key={index}
           src={src}
           alt={`cover-${index}`}

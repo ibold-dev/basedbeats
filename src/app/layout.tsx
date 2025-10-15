@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Josefin_Sans, Josefin_Slab } from "next/font/google";
 import "./globals.css";
 import { AppWrapper, BottomBar, TopBar } from "@/components";
+import { ModalProvider } from "@/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const josefinSans = Josefin_Sans({
+  variable: "--font-josefin-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const josefinSlab = Josefin_Slab({
+  variable: "--font-josefin-slab",
   subsets: ["latin"],
 });
 
@@ -26,13 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark text-foreground bg-background`}
+        className={`${josefinSans.variable} ${josefinSlab.variable} antialiased dark text-foreground bg-background`}
       >
-        <AppWrapper>
-          <TopBar />
-          {children}
+        <ModalProvider>
+          <AppWrapper>
+            <TopBar />
+            {children}
+          </AppWrapper>
           <BottomBar />
-        </AppWrapper>
+        </ModalProvider>
       </body>
     </html>
   );

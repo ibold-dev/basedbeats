@@ -5,17 +5,24 @@ import Image from "next/image";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useMusicStore } from "@/store/music";
+import { useModal } from "@/providers";
+import { useAudioProgress } from "@/hooks/use-audio-progress";
 
 interface BottomPlayerProps {
   className?: string;
+  onOpenModal?: () => void;
 }
 
-export function BottomPlayer({ className }: BottomPlayerProps) {
+export function BottomPlayer({ className, onOpenModal }: BottomPlayerProps) {
   const { currentTrack, isPlaying, currentTime, togglePlayPause } =
     useMusicStore();
+  const { isModalOpen } = useModal();
 
-  // Show nothing if no track is playing
-  if (!currentTrack) {
+  // Update progress every second when playing
+  useAudioProgress();
+
+  // Show nothing if no track is playing or modal is open
+  if (!currentTrack || isModalOpen) {
     return null;
   }
 
@@ -24,9 +31,10 @@ export function BottomPlayer({ className }: BottomPlayerProps) {
 
   return (
     <div
-      className={`bg-gray-800/95 backdrop-blur-sm rounded-lg p-3 mb-3 ${
+      className={`bg-gray-800/95 backdrop-blur-sm rounded-lg p-3 mb-3 cursor-pointer hover:bg-gray-700/95 transition-colors ${
         className || ""
       }`}
+      onClick={onOpenModal}
     >
       <div className="flex items-center gap-3">
         {/* Album Art */}
@@ -85,7 +93,7 @@ export function BottomPlayer({ className }: BottomPlayerProps) {
             variant="light"
             size="sm"
             className="w-8 h-8 min-w-8 bg-gray-700 hover:bg-gray-600"
-            onPress={togglePlayPause}
+            onPress={() => togglePlayPause()}
           >
             <Icon
               icon={isPlaying ? "mynaui:pause" : "mynaui:play"}

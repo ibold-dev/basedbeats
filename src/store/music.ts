@@ -170,7 +170,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
   },
 
   nextTrack: () => {
-    const { queue, currentIndex, playTrack, isShuffled, repeatMode } = get();
+    const { queue, currentIndex, playTrack, repeatMode } = get();
 
     if (repeatMode === "one") {
       // If repeat one is on, just restart current track

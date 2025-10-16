@@ -6,8 +6,8 @@ type NavTab = {
   id: NavTabLabel;
   label: string;
   href: string;
-  icon: any;
-  activeIcon: any;
+  icon: string | null;
+  activeIcon: string | null;
   isActive: boolean;
 };
 

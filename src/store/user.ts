@@ -36,7 +36,7 @@ export interface UserState {
   clearNotifications: () => void;
 }
 
-const useUserStore = create<UserState>((set, get) => ({
+const useUserStore = create<UserState>((set) => ({
   user: {
     id: "1",
     name: "Mukul",

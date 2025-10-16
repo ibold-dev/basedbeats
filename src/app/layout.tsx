@@ -20,22 +20,8 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.svg",
   },
-  manifest: "/manifest.json",
-  themeColor: "#0047ff",
+  manifest: "/manifest.ts",
   appleWebApp: { title: "Based Beats", statusBarStyle: "black-translucent" },
-  twitter: {
-    card: "summary_large_image",
-    title: "Based Beats",
-    description: "Based Beats is a platform for creating and sharing beats.",
-    images: ["/logo.svg"],
-  },
-  openGraph: {
-    type: "website",
-    url: "https://basedbeats.com",
-    title: "Based Beats",
-    description: "Based Beats is a platform for creating and sharing beats.",
-    images: ["/logo.svg"],
-  },
 };
 
 export default function RootLayout({

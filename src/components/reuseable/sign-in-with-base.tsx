@@ -107,13 +107,15 @@ export function SignInWithBase({
         color: "success",
       });
       console.log("Authentication successful:", result);
-    } catch (err: any) {
-      console.error("Authentication error:", err);
-      addToast({
-        title: "Connection Failed",
-        description: err.message || "Sign in failed. Please try again.",
-        color: "danger",
-      });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Authentication error:", err.message);
+        addToast({
+          title: "Connection Failed",
+          description: err.message || "Sign in failed. Please try again.",
+          color: "danger",
+        });
+      }
     } finally {
       setIsLoading(false);
     }

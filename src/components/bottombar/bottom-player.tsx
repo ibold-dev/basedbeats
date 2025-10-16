@@ -16,7 +16,7 @@ interface BottomPlayerProps {
 export function BottomPlayer({ className, onOpenModal }: BottomPlayerProps) {
   const { currentTrack, isPlaying, currentTime, togglePlayPause } =
     useMusicStore();
-  const { isModalOpen, setIsModalOpen } = useModal();
+  const { isModalOpen } = useModal();
 
   // Update progress every second when playing
   useAudioProgress();

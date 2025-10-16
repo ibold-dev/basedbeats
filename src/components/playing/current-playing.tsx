@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useMusicStore } from "@/store/music";
-import { useAudioProgress } from "@/hooks/use-audio-progress";
+import { useAudioProgress } from "@/hooks";
 
 interface CurrentPlayingProps {
   isOpen: boolean;

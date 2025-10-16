@@ -6,7 +6,6 @@ import { useMusicStore } from "@/store/music";
 import { Button } from "@heroui/react";
 
 export default function Home() {
-  const { isModalOpen, setIsModalOpen } = useModal();
   const { loadDemoTracks } = useMusicStore();
   const trendingItems = [
     {
@@ -103,12 +102,6 @@ export default function Home() {
         items={trendingItems}
         showStackedCovers={true}
         stackedImages={stackedImages}
-      />
-
-      {/* Now Playing Modal */}
-      <CurrentPlaying
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );

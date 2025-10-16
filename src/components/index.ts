@@ -2,3 +2,4 @@ export * from "./bottombar";
 export * from "./reuseable";
 export * from "./topbar";
 export * from "./playing";
+export * from "./account";

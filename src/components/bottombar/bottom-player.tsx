@@ -6,7 +6,7 @@ import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useMusicStore } from "@/store/music";
 import { useModal } from "@/providers";
-import { useAudioProgress } from "@/hooks/use-audio-progress";
+import { useAudioProgress } from "@/hooks";
 
 interface BottomPlayerProps {
   className?: string;
@@ -16,7 +16,7 @@ interface BottomPlayerProps {
 export function BottomPlayer({ className, onOpenModal }: BottomPlayerProps) {
   const { currentTrack, isPlaying, currentTime, togglePlayPause } =
     useMusicStore();
-  const { isModalOpen } = useModal();
+  const { isModalOpen, setIsModalOpen } = useModal();
 
   // Update progress every second when playing
   useAudioProgress();

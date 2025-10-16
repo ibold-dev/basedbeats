@@ -4,8 +4,14 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { useNavigationStore } from "@/store/navigation";
 import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { useNavigationUpdate } from "@/hooks";
 
 export function BottomNavigation() {
+  useNavigationUpdate();
+
+  const router = useRouter();
+
   const { activeTab, updatePath } = useNavigationStore();
 
   const tabs = [
@@ -16,20 +22,20 @@ export function BottomNavigation() {
       activeIcon: "mynaui:home-solid",
       href: "/",
     },
-    {
-      id: "search",
-      label: "Search",
-      icon: "mynaui:search",
-      activeIcon: "mynaui:search-solid",
-      href: "/search",
-    },
-    {
-      id: "library",
-      label: "Library",
-      icon: "mynaui:layers-three",
-      activeIcon: "mynaui:layers-three-solid",
-      href: "/library",
-    },
+    // {
+    //   id: "search",
+    //   label: "Search",
+    //   icon: "mynaui:search",
+    //   activeIcon: "mynaui:search-solid",
+    //   href: "/search",
+    // },
+    // {
+    //   id: "library",
+    //   label: "Library",
+    //   icon: "mynaui:layers-three",
+    //   activeIcon: "mynaui:layers-three-solid",
+    //   href: "/library",
+    // },
     {
       id: "account",
       label: "Account",
@@ -47,8 +53,12 @@ export function BottomNavigation() {
 
         return (
           <Button
+            radius="full"
             key={tab.id}
-            onPress={() => updatePath(tab.href)}
+            onPress={() => {
+              updatePath(tab.href);
+              router.push(tab.href);
+            }}
             variant="light"
             className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg transition-all duration-200 min-w-[60px] h-auto ${
               isActive

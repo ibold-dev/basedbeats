@@ -10,13 +10,13 @@ interface TopBarTabsProps {
 export function TopBarTabs({ className }: TopBarTabsProps) {
   const tabs = [
     "Top Picks",
-    "Explore",
-    "Charts",
-    "Weekly",
-    "Chi",
-    "Trending",
-    "New Releases",
-    "Genres",
+    // "Explore",
+    // "Charts",
+    // "Weekly",
+    // "Chi",
+    // "Trending",
+    // "New Releases",
+    // "Genres",
   ];
 
   const activeTab = "Top Picks";

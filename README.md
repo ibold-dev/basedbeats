@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔊 Based Beats
 
-## Getting Started
+**A seamless onchain music streaming app with no wallet pop-ups**
 
-First, run the development server:
+Built for **Base Builder Quest 11** - an onchain app that leverages the Base Account SDK to provide a frictionless Web3 music experience.
+
+## 🎯 About the Project
+
+Based Beats is a decentralized music streaming platform that demonstrates the power of **Sub Accounts with Auto Spend Permissions** from the Base Account SDK. Users can enjoy an onchain music experience without the friction of constant wallet confirmations and pop-ups.
+
+### Key Features
+
+- **No Wallet Pop-ups**: Seamless user experience using Base Account SDK's Sub Accounts with Auto Spend Permissions
+- **Onchain Music Streaming**: Fully decentralized music platform built on Base
+- **Sign-In with Base**: Easy authentication using Base's wallet integration
+- **Progressive Web App**: Installable PWA for native-like experience
+- **Modern UI**: Beautiful interface built with Next.js and Hero UI components
+
+## 🚀 Getting Started
+
+First, install dependencies:
 
 ```bash
-npm run dev
-# or
+yarn install
+```
+
+Then, run the development server:
+
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **[Next.js](https://nextjs.org)** - React framework for production
+- **[Base Account SDK](https://docs.base.org)** - Sub Accounts with Auto Spend Permissions
+- **[Wagmi](https://wagmi.sh)** - React hooks for Ethereum
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - State management
+- **[Hero UI](https://www.heroui.com/)** - UI component library
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 
-## Learn More
+## 🔑 Key Implementation
 
-To learn more about Next.js, take a look at the following resources:
+This app uses the Base Account SDK to integrate Sub Accounts with Auto Spend Permissions, allowing users to:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Sign in once with their wallet
+2. Create a sub-account with spending limits
+3. Interact with onchain features without repeated wallet confirmations
+4. Enjoy a seamless Web3 music streaming experience
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project was built for Base Builder Quest 11.

@@ -4,13 +4,17 @@ import React from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useUserStore } from "@/store/user";
+import { SignInWithBase } from "../reuseable";
+import { useAccount } from "wagmi";
+import { formatAddress } from "@/lib";
 
 interface TopBarDataProps {
   className?: string;
 }
 
 export function TopBarData({ className }: TopBarDataProps) {
-  const { user, unreadCount, markAllAsRead } = useUserStore();
+  const { unreadCount, markAllAsRead } = useUserStore();
+  const { isConnected, address } = useAccount();
 
   return (
     <div
@@ -18,11 +22,15 @@ export function TopBarData({ className }: TopBarDataProps) {
         className || ""
       }`}
     >
-      {/* Left: Greeting */}
+      {/* Left: Greeting or Sign In */}
       <div>
-        <h1 className="text-white text-xl font-medium">
-          Hello {user?.name || "User"}
-        </h1>
+        {isConnected && address ? (
+          <h1 className="text-white text-base sm:text-xl font-medium">
+            Hello {formatAddress(address)}
+          </h1>
+        ) : (
+          <SignInWithBase />
+        )}
       </div>
 
       {/* Right: Notification Bell */}

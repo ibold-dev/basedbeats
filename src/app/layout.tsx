@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Josefin_Sans, Josefin_Slab } from "next/font/google";
 import "./globals.css";
 import { AppWrapper, BottomBar, TopBar } from "@/components";
-import { ModalProvider } from "@/providers";
+import { ModalProvider, UIProvider, Web3Provider } from "@/providers";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
@@ -29,13 +29,17 @@ export default function RootLayout({
       <body
         className={`${josefinSans.variable} ${josefinSlab.variable} antialiased dark text-foreground bg-background`}
       >
-        <ModalProvider>
-          <AppWrapper>
-            <TopBar />
-            {children}
-          </AppWrapper>
-          <BottomBar />
-        </ModalProvider>
+        <UIProvider>
+          <Web3Provider>
+            <ModalProvider>
+              <AppWrapper>
+                <TopBar />
+                {children}
+              </AppWrapper>
+              <BottomBar />
+            </ModalProvider>
+          </Web3Provider>
+        </UIProvider>
       </body>
     </html>
   );

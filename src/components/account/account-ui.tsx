@@ -5,9 +5,12 @@ import Image from "next/image";
 import { Button, Divider } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useMusicStore } from "@/store/music";
+import { useAccount } from "wagmi";
+import { SignInWithBase } from "../reuseable";
 
 const AccountUI = () => {
   const { playTrack } = useMusicStore();
+  const { isConnected } = useAccount();
 
   // Mock liked songs data
   const likedSongs = [
@@ -92,6 +95,38 @@ const AccountUI = () => {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
+
+  // Show connect prompt if not connected
+  if (!isConnected) {
+    return (
+      <div className="max-w-[320px] mx-auto h-full flex flex-col items-center justify-center px-6">
+        <div className="text-center space-y-6">
+          <div className="flex justify-center">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-amber-600 to-amber-700 flex items-center justify-center">
+              <Image
+                src="/logo.svg"
+                alt="Logo BasedBeats"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-white text-2xl font-bold">
+              Connect Your Wallet
+            </h2>
+            <p className="text-gray-400 text-sm">
+              Connect your wallet to access your liked songs and personalized
+              content
+            </p>
+          </div>
+          <div className="w-full max-w-xs">
+            <SignInWithBase variant="full" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-[320px] mx-auto h-full flex flex-col">

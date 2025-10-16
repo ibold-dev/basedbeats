@@ -2,12 +2,15 @@
 
 import React from "react";
 import { Button } from "@heroui/react";
+import { useNavigationStore } from "@/store/navigation";
 
 interface TopBarTabsProps {
   className?: string;
 }
 
 export function TopBarTabs({ className }: TopBarTabsProps) {
+  const { activeTab: navTab } = useNavigationStore();
+
   const tabs = [
     "Top Picks",
     // "Explore",
@@ -19,11 +22,17 @@ export function TopBarTabs({ className }: TopBarTabsProps) {
     // "Genres",
   ];
 
+  const showTabs = navTab.href === "/account";
+
   const activeTab = "Top Picks";
 
   return (
     <div className={`px-4 pb-3 ${className || ""}`}>
-      <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+      <div
+        className={`flex gap-2 overflow-x-auto scrollbar-hide ${
+          showTabs ? "hidden" : ""
+        }`}
+      >
         {tabs.map((tab) => {
           const isActive = tab === activeTab;
 

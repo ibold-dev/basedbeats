@@ -1,7 +1,6 @@
 "use client";
 
-import { RowCovers, CurrentPlaying } from "@/components";
-import { useModal } from "@/providers";
+import { RowCovers } from "@/components";
 import { useMusicStore } from "@/store/music";
 import { Button } from "@heroui/react";
 

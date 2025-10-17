@@ -3,6 +3,10 @@ import { Josefin_Sans, Josefin_Slab } from "next/font/google";
 import "./globals.css";
 import { AppWrapper, BottomBar, TopBar } from "@/components";
 import { ModalProvider, UIProvider, Web3Provider } from "@/providers";
+import { ReactNode } from "react";
+import { cookieToInitialState } from "wagmi";
+import { headers } from "next/headers";
+import { getConfig } from "@/config";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
@@ -24,11 +28,12 @@ export const metadata: Metadata = {
   appleWebApp: { title: "Based Beats", statusBarStyle: "black-translucent" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout(props: { children: ReactNode }) {
+  const initialState = cookieToInitialState(
+    getConfig(),
+    (await headers()).get("cookie")
+  );
+
   return (
     <html lang="en">
       <body
@@ -39,7 +44,7 @@ export default function RootLayout({
             <ModalProvider>
               <AppWrapper>
                 <TopBar />
-                {children}
+                {props.children}
               </AppWrapper>
               <BottomBar />
             </ModalProvider>

@@ -6,7 +6,7 @@ import { ModalProvider, UIProvider, Web3Provider } from "@/providers";
 import { ReactNode } from "react";
 import { cookieToInitialState } from "wagmi";
 import { headers } from "next/headers";
-import { getConfig } from "@/config";
+import { getWagmiConfig } from "@/config";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout(props: { children: ReactNode }) {
   const initialState = cookieToInitialState(
-    getConfig(),
+    getWagmiConfig(),
     (await headers()).get("cookie")
   );
 
@@ -40,7 +40,7 @@ export default async function RootLayout(props: { children: ReactNode }) {
         className={`${josefinSans.variable} ${josefinSlab.variable} antialiased dark text-foreground bg-background`}
       >
         <UIProvider>
-          <Web3Provider>
+          <Web3Provider initialState={initialState}>
             <ModalProvider>
               <AppWrapper>
                 <TopBar />

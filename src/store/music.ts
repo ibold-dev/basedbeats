@@ -250,8 +250,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: true,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
       {
         id: "2",
@@ -262,8 +261,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: false,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
       {
         id: "3",
@@ -274,8 +272,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: true,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
       {
         id: "4",
@@ -286,8 +283,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: true,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
       {
         id: "5",
@@ -298,8 +294,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: true,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
       {
         id: "6",
@@ -310,8 +305,7 @@ const useMusicStore = create<MusicState>((set, get) => ({
           "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=300&fit=crop&crop=face",
         duration: 0, // Will be set to actual duration when loaded
         explicit: false,
-        audioUrl:
-          "https://archive.org/download/testmp3testfile/mpthreetest.mp3", // Demo audio URL
+        audioUrl: "https://archive.org/download/peaceful-tracks/001.mp3", // Demo audio URL
       },
     ];
 

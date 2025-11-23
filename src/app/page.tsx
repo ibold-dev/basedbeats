@@ -1,11 +1,18 @@
 "use client";
 
 import { RowCovers } from "@/components";
+import { sendTransaction } from "@/hooks/send-transaction";
+import { useFaucet } from "@/hooks/use-faucet";
 import { useMusicStore } from "@/store/music";
-import { Button } from "@heroui/react";
+import { Button, addToast } from "@heroui/react";
+import { useAccount } from "wagmi";
 
 export default function Home() {
+  const { address } = useAccount();
+  console.log(address);
   const { loadDemoTracks } = useMusicStore();
+  const { handleSendTransaction, sendUSDC } = sendTransaction();
+  const faucetMutation = useFaucet();
   const trendingItems = [
     {
       id: "1",
@@ -87,6 +94,53 @@ export default function Home() {
           className="w-full bg-amber-600 text-white"
         >
           Load Demo Tracks
+        </Button>
+      </div>
+
+      <div className="px-4 py-2">
+        <Button onPress={sendUSDC} className="w-full bg-amber-600 text-white">
+          Send Transaction
+        </Button>
+      </div>
+
+      <div className="px-4 py-2">
+        <Button
+          onPress={() => {
+            if (!address) {
+              addToast({
+                title: "Wallet Not Connected",
+                description: "Please connect your wallet first",
+                color: "warning",
+              });
+              return;
+            }
+            faucetMutation.mutate(
+              {
+                address: address as `0x${string}`,
+              },
+              {
+                onSuccess: (data) => {
+                  addToast({
+                    title: "Faucet Success!",
+                    description: data.message || "USDC sent to your wallet",
+                    color: "success",
+                  });
+                },
+                onError: (error) => {
+                  addToast({
+                    title: "Faucet Failed",
+                    description: error.message || "Failed to request faucet",
+                    color: "danger",
+                  });
+                },
+              }
+            );
+          }}
+          isLoading={faucetMutation.isPending}
+          isDisabled={!address || faucetMutation.isPending}
+          className="w-full bg-amber-600 text-white"
+        >
+          {faucetMutation.isPending ? "Requesting..." : "Receive Faucet"}
         </Button>
       </div>
 

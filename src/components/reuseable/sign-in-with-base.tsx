@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useConnect, useAccount, useDisconnect } from "wagmi";
 import { Button, addToast } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { base, baseSepolia } from "viem/chains";
+
+const chainId = baseSepolia.id;
 
 interface SignInWithBaseProps {
   variant?: "icon" | "full";
@@ -51,7 +54,7 @@ export function SignInWithBase({
             capabilities: {
               signInWithEthereum: {
                 nonce: string;
-                chainId: string;
+                chainId: number;
               };
             };
           }>;
@@ -77,7 +80,7 @@ export function SignInWithBase({
             capabilities: {
               signInWithEthereum: {
                 nonce,
-                chainId: "0x2105", // Base Mainnet - 8453
+                chainId: chainId, // Base Mainnet - 8453
               },
             },
           },

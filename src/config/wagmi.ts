@@ -4,7 +4,7 @@ import { baseAccount } from "wagmi/connectors";
 
 const getWagmiConfig = () => {
   return createConfig({
-    chains: [base, baseSepolia],
+    chains: [baseSepolia], //base
     connectors: [
       baseAccount({
         appName: "BasedBeats",
@@ -24,8 +24,8 @@ const getWagmiConfig = () => {
     }),
     ssr: true,
     transports: {
-      [base.id]: http(),
       [baseSepolia.id]: http(),
+      // [base.id]: http(),
     },
   });
 };
